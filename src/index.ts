@@ -1,9 +1,9 @@
 import createBackground from './gameObjects/background';
-import createBasketFront from './gameObjects/board/basketFront';
-import createBoard from './gameObjects/board/board';
-import createBall from './gameObjects/ball';
-import createBtn from './gameObjects/btn';
+import createRactangle from './gameObjects/ractangle';
+import createBubbles from './gameObjects/bubbles';
 import resources from './resources';
+
+import './option.json'
 
 import { Game, resource } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
@@ -14,7 +14,8 @@ import { RenderSystem } from '@eva/plugin-renderer-render';
 import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
-import { begin, next } from './manager';
+import createPerson from './gameObjects/person';
+// import { begin, next } from './manager';
 
 resource.addResource(resources);
 
@@ -39,15 +40,14 @@ const game = new Game({
 
 game.scene.transform.size.width = 750;
 game.scene.transform.size.height = 1484;
-const btn = createBtn({
-  text: '下一步',
-  callback() {
-    next()
-  }
-})
-game.scene.addChild(btn)
-
-
-setTimeout(()=>{
-  begin('newer')
-}, 3000)
+function createOption(obj: any) {
+  game.scene.addChild(createPerson());
+  game.scene.addChild(createRactangle(obj.title));
+  game.scene.addChild(createBubbles(obj.arr));
+}
+const obj = {
+  title : '放学后校门口特别热闹，门口小商贩的周围，总是会聚集很多学生，你决定：',
+  arr: ['回家看铠甲勇士','冲进小卖部']
+}
+createOption(obj)
+game.scene.addChild(createBackground());
