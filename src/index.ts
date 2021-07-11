@@ -12,7 +12,7 @@ import { RenderSystem } from '@eva/plugin-renderer-render';
 import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
-import { begin, next, initDialogue, clickDialogue } from './manager';
+import { begin, next } from './manager';
 import { SCENE_HEIGHT, SCENE_WIDTH } from './const';
 import createBackground from './gameObjects/background';
 import createPlayer from './gameObjects/player';
@@ -21,6 +21,7 @@ import createStory from './story';
 window.event = event
 
 resource.addResource(resources);
+window.resources = resources
 
 const game = new Game({
   systems: [
@@ -57,6 +58,9 @@ window.player = player
 event.on('changeStep', (step) => {
   background.changeStep(step)
   player.changePlayer(step)
+  setTimeout(() => {
+    next()
+  }, 3000)
 })
 
 
@@ -71,19 +75,21 @@ game.scene.addChild(btn)
 setTimeout(() => {
   begin('child')
 }, 3000)
-// Avatar
-const avatarGO = new Avatar();
-const avatarEl = avatarGO.init({})
-game.scene.addChild(avatarEl);
 
 
-
-event.on('dialogue', (list) => {
-  const { initDialogue, clickDialogue } = createStory(list)
+event.on('dialogue', (dialogue) => {
+  const { initDialogue, clickDialogue } = createStory(dialogue)
+  const dialogueInfo = initDialogue();
+  // Avatar
+  const avatarGO = new Avatar();
+  const avatarEl = avatarGO.init({
+    avatar: dialogueInfo.avatar
+  })
+  game.scene.addChild(avatarEl);
   // Dialogue
   const dialogueGO = new Dialogue();
   const dialogueEl = dialogueGO.init({
-    text: initDialogue(),
+    text: dialogueInfo.text,
     onTap: () => {
       clickDialogue(dialogueGO, avatarGO);
     }

@@ -24,6 +24,18 @@ const resources = [
       },
     },
     preload: true,
+  },
+  {
+    name: 'avatar2',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/avatar2.png',
+      },
+    },
+    preload: true,
   }
 ] as any;
 step.forEach((item) => {

@@ -5,17 +5,17 @@ import { Text } from '@eva/plugin-renderer-text';
 import { Transition } from '@eva/plugin-transition';
 
 interface initParams {
+  avatar: string;
 }
 
 interface nextParams {
-  text: string;
+  avatar: string;
 }
 
 class Avatar {
   box: any;
-  textEl: any;
-  textComponents: any;
-  init({}: initParams) {
+  avatarComponent: any;
+  init({ avatar }: initParams) {
     const box = this.box = new GameObject('box', {
       size: {
         width: 100,
@@ -27,13 +27,16 @@ class Avatar {
       },
     });
   
-    box.addComponent(
+    this.avatarComponent = box.addComponent(
       new Img({
-        resource: 'avatar',
+        resource: avatar,
       })
     );
   
     return box;
+  }
+  next({ avatar } : nextParams ) {
+    this.avatarComponent.resource = avatar;
   }
   playMoveAnimate() {
     const transition = this.box.addComponent(new Transition({

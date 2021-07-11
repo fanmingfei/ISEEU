@@ -20,7 +20,7 @@ export function begin(stepId: string) {
 
 const loadDialogue = () => {
   console.log('对话：', current.list.map(x => x.name + ': ' + x.value))
-  event.emit('dialogue', current.list)
+  event.emit('dialogue', current)
 }
 const loadQuestion = () => {
   console.log('问题： ', current.value)
