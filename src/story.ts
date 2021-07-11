@@ -2,7 +2,7 @@
 import { Dialogue } from './config';
 import { next } from './manager';
 
-export default function createStory(dialogue: Dialogue) {
+export default function createStory(dialogue: Dialogue, sound:any) {
   const list = dialogue.list
   /** 当前对话框次序 */
   let currentDialogueIndex = 0;
@@ -10,6 +10,12 @@ export default function createStory(dialogue: Dialogue) {
   function initDialogue() {
     const currentInfo = list?.[currentDialogueIndex];
     console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
+      console.log(currentInfo)
+      if (currentInfo.seek && currentInfo.duration) {
+      sound.config.seek = currentInfo.seek
+      sound.config.duration = currentInfo.duration
+      sound.play()
+    }
     return {
       text: currentInfo?.value,
       avatar: `dialogue_${dialogue?.id}_${currentDialogueIndex}`
@@ -28,6 +34,13 @@ export default function createStory(dialogue: Dialogue) {
       avatarGO.next({
         avatar: `dialogue_${dialogue?.id}_${currentDialogueIndex}`
       })
+      if (currentInfo.seek && currentInfo.duration) {
+        sound.pause()
+        sound.config.seek = currentInfo.seek
+        sound.config.duration = currentInfo.duration
+        sound.play()
+      }
+      
     } else {
       // 结束
       avatarGO.playMoveAnimate();

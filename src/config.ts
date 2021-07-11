@@ -51,6 +51,8 @@ export interface Dialogue {
     name: string;
     /** 内容 */
     value: string;
+    seek: number;
+    duration: number
   }>;
   /** 下一步行为 */
   next: Array<Next>;
@@ -77,17 +79,23 @@ export const dialogue: Dialogue[] = [{
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '你背着书包冲进家门，高喊一声“我回来啦”，爸爸妈妈正在厨房做饭'
+      value: '你背着书包冲进家门，高喊一声“我回来啦”，爸爸妈妈正在厨房做饭',
+      seek: 0.1,
+      duration: 3,
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '你将书包甩到书桌上，打开电视准备看海绵宝宝'
+      value: '你将书包甩到书桌上，打开电视准备看海绵宝宝',
+      seek: 3,
+      duration: 3
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '还没看一会儿，妈妈就开吼：作业写完了么？就看电视！'
+      value: '还没看一会儿，妈妈就开吼：作业写完了么？就看电视！',
+      seek: 4,
+      duration: 3
     },
     {
       avatar: './statics/haimianbaobao.png',

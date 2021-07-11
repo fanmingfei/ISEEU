@@ -86,6 +86,17 @@ const resources = [
     },
     preload: true,
   },
+  {
+    name: 'bgSound',
+    type: RESOURCE_TYPE.AUDIO,
+    src: {
+      audio: {
+        type: 'audio',
+        url: './statics/example.mp3',
+      },
+    },
+    preload: true,
+  },
 ] as any;
 step.forEach((item) => {
   resources.push({

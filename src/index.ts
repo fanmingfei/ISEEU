@@ -7,11 +7,12 @@ import { Game, GameObject, resource, } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
-import { SpriteAnimationSystem } from '@eva/plugin-renderer-sprite-animation';
+// import { SpriteAnimationSystem } from '@eva/plugin-renderer-sprite-animation';
 import { RenderSystem } from '@eva/plugin-renderer-render';
 import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
+import { SoundSystem, Sound } from '@eva/plugin-sound';
 import { answerSelected, begin, next } from './manager';
 import { SCENE_HEIGHT, SCENE_WIDTH } from './const';
 import createBackground from './gameObjects/background';
@@ -38,16 +39,25 @@ const game = new Game({
     }),
     new ImgSystem(),
     new TransitionSystem(),
-    new SpriteAnimationSystem(),
+    // new SpriteAnimationSystem(),
     new RenderSystem(),
     new EventSystem(),
     new GraphicsSystem(),
     new TextSystem(),
+    new SoundSystem({ autoPauseAndStart: true, onError() { } })
   ],
 });
 
 game.scene.transform.size.width = SCENE_WIDTH;
 game.scene.transform.size.height = SCENE_HEIGHT;
+
+const sound = game.scene.addComponent(new Sound({
+  resource: 'bgSound'
+}))
+// document.body.addEventListener('touchstart', () => {
+//   sound.play()
+// })
+
 
 const { backContainer, background } = createBackground()
 game.scene.addChild(backContainer)
@@ -71,9 +81,8 @@ begin('child')
 
 
 event.on('dialogue', (dialogue) => {
-  const { initDialogue, clickDialogue } = createStory(dialogue)
+  const { initDialogue, clickDialogue } = createStory(dialogue, sound)
   const dialogueInfo = initDialogue();
-  
   // Dialogue
   const dialogueGO = new Dialogue();
   const dialogueEl = dialogueGO.init({
@@ -83,7 +92,7 @@ event.on('dialogue', (dialogue) => {
     }
   })
   game.scene.addChild(dialogueEl);
-  
+
   // Avatar
   const avatarGO = new Avatar();
   const avatarEl = avatarGO.init({
@@ -104,3 +113,14 @@ event.on('answer', (id) => {
   rect.remove()
   select.remove()
 })
+
+
+
+
+// setTimeout(() => {
+//   sound.pause()
+//   sound.config.seek = 4
+//   sound.config.duration = 3
+// }, 5000)
+
+
