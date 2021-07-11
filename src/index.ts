@@ -2,6 +2,8 @@ import createBackground from './gameObjects/background';
 import createBasketFront from './gameObjects/board/basketFront';
 import createBoard from './gameObjects/board/board';
 import createBall from './gameObjects/ball';
+import { Avatar } from './gameObjects/avatar';
+import { Dialogue } from './gameObjects/dialogue';
 import createBtn from './gameObjects/btn';
 import resources from './resources';
 
@@ -14,7 +16,7 @@ import { RenderSystem } from '@eva/plugin-renderer-render';
 import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
-import { begin, next } from './manager';
+import { begin, next, initDialogue, clickDialogue } from './manager';
 
 resource.addResource(resources);
 
@@ -46,6 +48,21 @@ const btn = createBtn({
   }
 })
 game.scene.addChild(btn)
+
+// Avatar
+const avatarGO = new Avatar();
+const avatarEl = avatarGO.init({})
+game.scene.addChild(avatarEl);
+
+// Dialogue
+const dialogueGO = new Dialogue();
+const dialogueEl = dialogueGO.init({
+  text: initDialogue(),
+  onTap: () => {
+    clickDialogue(dialogueGO, avatarGO);
+  }
+})
+game.scene.addChild(dialogueEl);
 
 
 setTimeout(()=>{

@@ -81,4 +81,28 @@ export default [
     },
     preload: true,
   },
+  {
+    name: 'dialogue',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/dialogue.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'avatar',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/avatar.png',
+      },
+    },
+    preload: true,
+  },
 ];
