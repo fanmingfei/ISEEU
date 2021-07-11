@@ -3,7 +3,7 @@ import { Dialogue } from './gameObjects/dialogue';
 import createBtn from './gameObjects/btn';
 import resources from './resources';
 
-import { Game, resource, } from '@eva/eva.js';
+import { Game, GameObject, resource, } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
@@ -12,15 +12,20 @@ import { RenderSystem } from '@eva/plugin-renderer-render';
 import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
-import { begin, next, initDialogue, clickDialogue } from './manager';
+import { answerSelected, begin, next } from './manager';
 import { SCENE_HEIGHT, SCENE_WIDTH } from './const';
 import createBackground from './gameObjects/background';
 import createPlayer from './gameObjects/player';
 import event from './event';
 import createStory from './story';
+import createPerson from './gameObjects/person';
+import createRactangle from './gameObjects/ractangle';
+import createBubbles from './gameObjects/bubbles';
+import { Question } from './config';
 window.event = event
 
 resource.addResource(resources);
+window.resources = resources
 
 const game = new Game({
   systems: [
@@ -57,25 +62,16 @@ window.player = player
 event.on('changeStep', (step) => {
   background.changeStep(step)
   player.changePlayer(step)
-})
-
-
-const btn = createBtn({
-  text: '下一步',
-  callback() {
+  setTimeout(() => {
     next()
-  }
+  }, 3000)
 })
-game.scene.addChild(btn)
 
-setTimeout(() => {
-  begin('child')
-}, 3000)
+begin('child')
 
 
-
-event.on('dialogue', (list) => {
-  const { initDialogue, clickDialogue } = createStory(list)
+event.on('dialogue', (dialogue) => {
+  const { initDialogue, clickDialogue } = createStory(dialogue)
   const dialogueInfo = initDialogue();
   // Avatar
   const avatarGO = new Avatar();
@@ -92,4 +88,17 @@ event.on('dialogue', (list) => {
     }
   })
   game.scene.addChild(dialogueEl);
+})
+let rect: GameObject, select: GameObject
+event.on('question', (obj: Question) => {
+  rect = createRactangle(obj.value)
+  game.scene.addChild(rect);
+  select = createBubbles(obj.answers)
+  game.scene.addChild(select);
+})
+
+event.on('answer', (id) => {
+  answerSelected(id)
+  rect.remove()
+  select.remove()
 })
