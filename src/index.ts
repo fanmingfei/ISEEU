@@ -17,6 +17,7 @@ import { SCENE_HEIGHT, SCENE_WIDTH } from './const';
 import createBackground from './gameObjects/background';
 import createPlayer from './gameObjects/player';
 import event from './event';
+import createStory from './story';
 window.event = event
 
 resource.addResource(resources);
@@ -43,12 +44,12 @@ const game = new Game({
 game.scene.transform.size.width = SCENE_WIDTH;
 game.scene.transform.size.height = SCENE_HEIGHT;
 
-const {backContainer,background} = createBackground()
+const { backContainer, background } = createBackground()
 game.scene.addChild(backContainer)
 // background.changeStep('bg')
 window.background = background
 
-const {playerGo, player} = createPlayer()
+const { playerGo, player } = createPlayer()
 
 game.scene.addChild(playerGo)
 window.player = player
@@ -75,13 +76,17 @@ const avatarGO = new Avatar();
 const avatarEl = avatarGO.init({})
 game.scene.addChild(avatarEl);
 
-// Dialogue
-const dialogueGO = new Dialogue();
-const dialogueEl = dialogueGO.init({
-  text: initDialogue(),
-  onTap: () => {
-    clickDialogue(dialogueGO, avatarGO);
-  }
-})
-game.scene.addChild(dialogueEl);
 
+
+event.on('dialogue', (list) => {
+  const { initDialogue, clickDialogue } = createStory(list)
+  // Dialogue
+  const dialogueGO = new Dialogue();
+  const dialogueEl = dialogueGO.init({
+    text: initDialogue(),
+    onTap: () => {
+      clickDialogue(dialogueGO, avatarGO);
+    }
+  })
+  game.scene.addChild(dialogueEl);
+})

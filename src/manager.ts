@@ -20,6 +20,7 @@ export function begin(stepId: string) {
 
 const loadDialogue = () => {
   console.log('对话：', current.list.map(x => x.name + ': ' + x.value))
+  event.emit('dialogue', current.list)
 }
 const loadQuestion = () => {
   console.log('问题： ', current.value)
@@ -71,27 +72,3 @@ export function answerSelected(id: string) {
 }
 
 window.answerSelected = answerSelected
-
-/** 当前对话框次序 */
-let currentDialogueIndex = 0;
-/** 对话框初始信息 */
-export function initDialogue() {
-  const currentText = dialogue?.[0]?.list?.[currentDialogueIndex]?.value;
-  return currentText;
-}
-/** 点击对话框 */
-export function clickDialogue(dialogueGO: any, avatarGO: any) {
-  const length = dialogue?.[0]?.list?.length;
-  currentDialogueIndex++;
-  if (currentDialogueIndex !== length) {
-    const currentText = dialogue?.[0]?.list?.[currentDialogueIndex]?.value;
-    dialogueGO.next({
-      text: currentText
-    })
-  } else {
-    // 结束
-    avatarGO.playMoveAnimate();
-    dialogueGO.destroy();
-  }
-  return;
-}
