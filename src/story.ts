@@ -1,22 +1,32 @@
+
+import { Dialogue } from './config';
 import { next } from './manager';
 
-export default function createStory(list: any[]) {
-
+export default function createStory(dialogue: Dialogue) {
+  const list = dialogue.list
   /** 当前对话框次序 */
   let currentDialogueIndex = 0;
   /** 对话框初始信息 */
   function initDialogue() {
-    const currentText = list?.[currentDialogueIndex]?.value;
-    return currentText;
+    const currentInfo = list?.[currentDialogueIndex];
+console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
+    return {
+      text: currentInfo?.value,
+      avatar: `dialogue_${dialogue?.id}_${currentDialogueIndex}`
+    };
   }
   /** 点击对话框 */
   function clickDialogue(dialogueGO: any, avatarGO: any) {
     const length = list.length;
     currentDialogueIndex++;
     if (currentDialogueIndex !== length) {
-      const currentText = list?.[currentDialogueIndex]?.value;
+      const currentInfo = list?.[currentDialogueIndex];
       dialogueGO.next({
-        text: currentText
+        text: currentInfo?.value
+      })
+console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
+      avatarGO.next({
+        avatar: `dialogue_${dialogue?.id}_${currentDialogueIndex}`
       })
     } else {
       // 结束

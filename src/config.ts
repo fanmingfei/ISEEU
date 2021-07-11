@@ -71,12 +71,12 @@ export const dialogue: Dialogue[] = [{
   id: 'START',
   list: [
     {
-      avatar: 'avatar',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '妈妈',
       value: '这是我们的孩子，给他起个名字吧！'
     },
     {
-      avatar: 'avatar2',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '爸爸',
       value: '就叫狗蛋吧！'
     },
@@ -91,17 +91,17 @@ export const dialogue: Dialogue[] = [{
   id: 'cry',
   list: [
     {
-      avatar: '',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '妈妈',
       value: '狗蛋怎么哭了'
     },
     {
-      avatar: '',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '爸爸',
       value: '可能是想喝狗奶了吧！'
     },
     {
-      avatar: '',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '妈妈',
       value: '去你的吧！'
     },
@@ -116,17 +116,17 @@ export const dialogue: Dialogue[] = [{
   id: 'happy',
   list: [
     {
-      avatar: '',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '妈妈',
       value: '你看狗蛋笑的多开心'
     },
     {
-      avatar: '',
+      avatar: 'https://gw.alicdn.com/tfs/TB1DNzoOvb2gK0jSZK9XXaEgFXa-658-1152.webp',
       name: '爸爸',
       value: '可不是吗，名字那么好听'
     },
     {
-      avatar: '',
+      avatar: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
       name: '妈妈',
       value: '嗯嗯嗯！'
     },
