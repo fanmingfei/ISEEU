@@ -32,7 +32,7 @@ console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
       // 结束
       avatarGO.playMoveAnimate();
       dialogueGO.destroy();
-      next()
+      setTimeout(() => next(), 3000)
     }
     return;
   }

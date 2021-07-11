@@ -12,6 +12,9 @@ let current: AllType;
 function getAnswer(id: string) {
   return answerCache[id]
 }
+function setAnswer(questionID: string, answerID: string) {
+  answerCache[questionID] = answerID
+}
 
 export function begin(stepId: string) {
   current = findById(step, stepId) as AllType;
@@ -25,6 +28,7 @@ const loadDialogue = () => {
 const loadQuestion = () => {
   console.log('问题： ', current.value)
   console.log('选项：', current.answers.map((v) => v.value))
+  event.emit('question', current)
 }
 const loadStep = () => {
   console.log('加载场景', current.id)
@@ -65,6 +69,7 @@ export function next(nexts?: Next[]) {
 /** 当选项被选择时 */
 export function answerSelected(id: string) {
   if (current.type !== ConfigType.question) return
+  setAnswer(current.id, id)
   const answer = findById(current.answers, id)
   if (answer) {
     next(answer.next)

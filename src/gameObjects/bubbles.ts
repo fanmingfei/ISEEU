@@ -2,9 +2,10 @@ import { GameObject } from '@eva/eva.js'
 import { Event } from '@eva/plugin-renderer-event'
 import { Img } from '@eva/plugin-renderer-img'
 import { Text } from '@eva/plugin-renderer-text'
+import event from '../event'
 
 
-export default function createBubbles(textArr: Array<string>) {
+export default function createBubbles(textArr: Array<any>) {
   const box = new GameObject('box', {
     size: { width: 750, height: 1000 },
     position: {
@@ -32,7 +33,7 @@ export default function createBubbles(textArr: Array<string>) {
       resource: 'bubble1',
     })
   );
-  
+
   const text1 = new GameObject('text1', {
     size: { width: 470, height: 390 },
     position: {
@@ -50,12 +51,12 @@ export default function createBubbles(textArr: Array<string>) {
   })
   text1.addComponent(
     new Text({
-      text: textArr[0],
+      text: textArr[0].value,
       style: {
         fontFamily: 'Arial',
         fontSize: 26,
-        fontWeight: 'bold',   
-        fill:'white',
+        fontWeight: 'bold',
+        fill: 'white',
         wordWrap: true,
         wordWrapWidth: 200,
         breakWords: true
@@ -85,7 +86,7 @@ export default function createBubbles(textArr: Array<string>) {
       resource: 'bubble2',
     })
   );
-  
+
   const text2 = new GameObject('text2', {
     size: { width: 470, height: 390 },
     position: {
@@ -101,15 +102,15 @@ export default function createBubbles(textArr: Array<string>) {
       y: 0.5
     }
   })
-  
+
   text2.addComponent(
     new Text({
-      text: textArr[1],
+      text: textArr[1].value,
       style: {
         fontFamily: 'Arial',
         fontSize: 26,
-        fontWeight: 'bold',   
-        fill:'white',
+        fontWeight: 'bold',
+        fill: 'white',
         wordWrap: true,
         wordWrapWidth: 200,
         breakWords: true
@@ -117,12 +118,12 @@ export default function createBubbles(textArr: Array<string>) {
     })
   )
   const evt = bubble1.addComponent(new Event())
-  evt.on('tap', () =>{
-    console.log(666)
+  evt.on('tap', () => {
+    event.emit('answer', textArr[0].id)
   })
   const evt2 = bubble2.addComponent(new Event())
-  evt2.on('tap', () =>{
-    console.log(777)
+  evt2.on('tap', () => {
+    event.emit('answer', textArr[1].id)
   })
   bubble2.addChild(text2)
   box.addChild(bubble1)
