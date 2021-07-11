@@ -27,8 +27,16 @@ class Dialogue {
       },
       position: {
         x: 0,
-        y: 900,
+        y: -320,
       },
+      anchor: {
+        y: 1,
+        x: 0.5
+      },
+      origin: {
+        y: 1,
+        x: 0.5
+      }
     });
 
     box.addComponent(
@@ -52,7 +60,7 @@ class Dialogue {
     const textEl = this.textEl = new GameObject('text', {
       position: {
         x: 120,
-        y: 125,
+        y: 105,
       },
     });
     this.textComponent = textEl.addComponent(
@@ -63,7 +71,7 @@ class Dialogue {
           fontSize: 32,
           fill: 0x333333,
           wordWrap: true,
-          wordWrapWidth: 580,
+          wordWrapWidth: 510,
           breakWords: true
         },
       })
