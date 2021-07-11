@@ -76,17 +76,23 @@ window.answerSelected = answerSelected
 let currentDialogueIndex = 0;
 /** 对话框初始信息 */
 export function initDialogue() {
-  const currentText = dialogue?.[0]?.list?.[currentDialogueIndex]?.value;
-  return currentText;
+  const currentInfo = dialogue?.[0]?.list?.[currentDialogueIndex];
+  return {
+    text: currentInfo?.value,
+    avatar: currentInfo?.avatar
+  };
 }
 /** 点击对话框 */
 export function clickDialogue(dialogueGO: any, avatarGO: any) {
   const length = dialogue?.[0]?.list?.length;
   currentDialogueIndex++;
   if (currentDialogueIndex !== length) {
-    const currentText = dialogue?.[0]?.list?.[currentDialogueIndex]?.value;
+    const currentInfo = dialogue?.[0]?.list?.[currentDialogueIndex];
     dialogueGO.next({
-      text: currentText
+      text: currentInfo?.value
+    })
+    avatarGO.next({
+      avatar: currentInfo?.avatar
     })
   } else {
     // 结束

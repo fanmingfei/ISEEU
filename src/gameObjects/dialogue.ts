@@ -2,6 +2,7 @@ import { GameObject } from '@eva/eva.js';
 import { Event } from '@eva/plugin-renderer-event';
 import { Img } from '@eva/plugin-renderer-img';
 import { Text } from '@eva/plugin-renderer-text';
+import { Render } from '@eva/plugin-renderer-render';
 import { Transition } from '@eva/plugin-transition';
 
 interface initParams {
@@ -16,7 +17,8 @@ interface nextParams {
 class Dialogue {
   box: any;
   textEl: any;
-  textComponents: any;
+  textComponent: any;
+  renderComponent: object;
   init({ text, onTap }: initParams) {
     const box = this.box = new GameObject('box', {
       size: {
@@ -34,6 +36,12 @@ class Dialogue {
         resource: 'dialogue',
       })
     );
+
+    this.renderComponent = box.addComponent(
+      new Render({
+        alpha: 1,
+      }),
+    );
   
     const evt = box.addComponent(new Event)
     evt.on('tap', () => {
@@ -47,7 +55,7 @@ class Dialogue {
         y: 25,
       },
     });
-    this.textComponents = textEl.addComponent(
+    this.textComponent = textEl.addComponent(
       new Text({
         text: text,
         style: {
@@ -64,15 +72,15 @@ class Dialogue {
     return box;
   }
   next({ text } : nextParams ) {
-    this.textComponents.text = text;
+    this.textComponent.text = text;
   }
-  destroy() {
-    // const transition = this.box.addComponent(new Transition({
+  async destroy() {
+    // const transition = new Transition({
     //   group: {
     //     idle: [
     //       {
-    //         name: 'scale.x',
-    //         component: this.box.transform,
+    //         name: 'alpha',
+    //         component: this.renderComponent,
     //         values: [
     //           {
     //             time: 0,
@@ -84,30 +92,17 @@ class Dialogue {
     //             value: 0,
     //           },
     //         ],
-    //       },
-    //       {
-    //         name: 'scale.y',
-    //         component: this.box.transform,
-    //         values: [
-    //           {
-    //             time: 0,
-    //             value: 1,
-    //             tween: 'ease-out',
-    //           },
-    //           {
-    //             time: 300,
-    //             value: 0,
-    //           },
-    //         ],
-    //       },
+    //       }
     //     ]
     //   }
-    // }))
+    // })
+    // const animation = this.box.addComponent(transition)
   
-    // transition.play('idle', 1)
-
-    // await(300);
-    this.box.destroy();
+    // animation.play('idle', 1)
+    // animation.on('finish', () => {
+    //   this.box.removeComponent(transition);
+      this.box.destroy();
+    // })
   }
 }
 export { Dialogue };

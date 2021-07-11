@@ -71,12 +71,12 @@ export const dialogue: Dialogue[] = [{
   id: 'START',
   list: [
     {
-      avatar: '',
+      avatar: 'avatar',
       name: '妈妈',
       value: '这是我们的孩子，给他起个名字吧！'
     },
     {
-      avatar: '',
+      avatar: 'avatar2',
       name: '爸爸',
       value: '就叫狗蛋吧！'
     },

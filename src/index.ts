@@ -70,15 +70,19 @@ game.scene.addChild(btn)
 setTimeout(() => {
   begin('child')
 }, 3000)
+
+const dialogueInfo = initDialogue();
 // Avatar
 const avatarGO = new Avatar();
-const avatarEl = avatarGO.init({})
+const avatarEl = avatarGO.init({
+  avatar: dialogueInfo.avatar
+})
 game.scene.addChild(avatarEl);
 
 // Dialogue
 const dialogueGO = new Dialogue();
 const dialogueEl = dialogueGO.init({
-  text: initDialogue(),
+  text: dialogueInfo.text,
   onTap: () => {
     clickDialogue(dialogueGO, avatarGO);
   }
