@@ -73,12 +73,7 @@ begin('child')
 event.on('dialogue', (dialogue) => {
   const { initDialogue, clickDialogue } = createStory(dialogue)
   const dialogueInfo = initDialogue();
-  // Avatar
-  const avatarGO = new Avatar();
-  const avatarEl = avatarGO.init({
-    avatar: dialogueInfo.avatar
-  })
-  game.scene.addChild(avatarEl);
+  
   // Dialogue
   const dialogueGO = new Dialogue();
   const dialogueEl = dialogueGO.init({
@@ -88,6 +83,13 @@ event.on('dialogue', (dialogue) => {
     }
   })
   game.scene.addChild(dialogueEl);
+  
+  // Avatar
+  const avatarGO = new Avatar();
+  const avatarEl = avatarGO.init({
+    avatar: dialogueInfo.avatar
+  })
+  game.scene.addChild(avatarEl);
 })
 let rect: GameObject, select: GameObject
 event.on('question', (obj: Question) => {
