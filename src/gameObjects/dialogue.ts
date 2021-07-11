@@ -51,8 +51,8 @@ class Dialogue {
   
     const textEl = this.textEl = new GameObject('text', {
       position: {
-        x: 25,
-        y: 25,
+        x: 120,
+        y: 125,
       },
     });
     this.textComponent = textEl.addComponent(
@@ -62,7 +62,7 @@ class Dialogue {
           fontSize: 32,
           fill: 0xffffff,
           wordWrap: true,
-          wordWrapWidth: 700,
+          wordWrapWidth: 580,
           breakWords: true
         },
       })
