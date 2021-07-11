@@ -186,8 +186,8 @@ export const dialogue: Dialogue[] = [{
     }
   ],
   next: [{
-    type: ConfigType.step,
-    id: 'end'
+    type: ConfigType.empty,
+    id: ''
   }],
   conditions: []
 }, {
@@ -211,8 +211,8 @@ export const dialogue: Dialogue[] = [{
     },
   ],
   next: [{
-    type: ConfigType.step,
-    id: 'end'
+    type: ConfigType.empty,
+    id: ''
   }],
   conditions: []
 }]
@@ -291,8 +291,8 @@ export const step: Step[] = [
   {
     type: ConfigType.step,
     id: 'child',
-    background: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
-    player: './statics/player.png',
+    background: './statics/child.png',
+    player: './statics/player_child.png',
     next: [{
       type: ConfigType.question,
       id: 'confirm_school_choice'
@@ -301,8 +301,8 @@ export const step: Step[] = [
   {
     type: ConfigType.step,
     id: 'youth',
-    background: 'https://gw.alicdn.com/tfs/TB1DNzoOvb2gK0jSZK9XXaEgFXa-658-1152.webp',
-    player: 'https://gw.alicdn.com/tfs/TB1DNzoOvb2gK0jSZK9XXaEgFXa-658-1152.webp',
+    background: './statics/youth.png',
+    player: './statics/player_youth.png',
     next: [{
       type: ConfigType.question,
       id: 'confirm_youth_choice'
@@ -311,21 +311,11 @@ export const step: Step[] = [
   {
     type: ConfigType.step,
     id: 'adult',
-    background: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
-    player: './statics/player.png',
+    background: './statics/adult.png',
+    player: './statics/player_adult.png',
     next: [{
       type: ConfigType.question,
       id: 'confirm_adult_choice'
-    }]
-  },
-  {
-    type: ConfigType.step,
-    id: 'end',
-    background: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
-    player: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
-    next: [{
-      type: ConfigType.empty,
-      id: ''
     }]
   }
 ]

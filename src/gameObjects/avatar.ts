@@ -14,6 +14,7 @@ interface nextParams {
 }
 const w = 150;
 const h = 100;
+const y = 900;
 
 class Avatar {
   box: any;
@@ -28,7 +29,7 @@ class Avatar {
       },
       position: {
         x: 0 + w / 2,
-        y: 700 + h / 2,
+        y: y + h / 2,
       },
       origin: { x: 0.5, y: 0.5 },
     });
@@ -75,7 +76,7 @@ class Avatar {
             values: [
               {
                 time: 0,
-                value: 700 + h / 2,
+                value: y + h / 2,
                 tween: 'ease-out',
               },
               {

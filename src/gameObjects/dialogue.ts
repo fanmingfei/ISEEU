@@ -27,7 +27,7 @@ class Dialogue {
       },
       position: {
         x: 0,
-        y: 700,
+        y: 900,
       },
     });
   
