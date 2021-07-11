@@ -1,11 +1,8 @@
-import createBackground from './gameObjects/background';
-import createBasketFront from './gameObjects/board/basketFront';
-import createBoard from './gameObjects/board/board';
-import createBall from './gameObjects/ball';
+
 import createBtn from './gameObjects/btn';
 import resources from './resources';
 
-import { Game, resource } from '@eva/eva.js';
+import { Game, resource, } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
@@ -15,6 +12,11 @@ import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
 import { begin, next } from './manager';
+import { SCENE_HEIGHT, SCENE_WIDTH } from './const';
+import createBackground from './gameObjects/background';
+import createPlayer from './gameObjects/player';
+import event from './event';
+window.event = event
 
 resource.addResource(resources);
 
@@ -22,8 +24,8 @@ const game = new Game({
   systems: [
     new RendererSystem({
       canvas: document.querySelector('#canvas'),
-      width: 750,
-      height: 750 / window.innerWidth * window.innerHeight,
+      width: SCENE_WIDTH,
+      height: SCENE_HEIGHT,
       antialias: true,
       resolution: devicePixelRatio / 2
     }),
@@ -37,8 +39,25 @@ const game = new Game({
   ],
 });
 
-game.scene.transform.size.width = 750;
-game.scene.transform.size.height = 1484;
+game.scene.transform.size.width = SCENE_WIDTH;
+game.scene.transform.size.height = SCENE_HEIGHT;
+
+const {backContainer,background} = createBackground()
+game.scene.addChild(backContainer)
+// background.changeStep('bg')
+window.background = background
+
+const {playerGo, player} = createPlayer()
+
+game.scene.addChild(playerGo)
+window.player = player
+
+event.on('changeStep', (step) => {
+  background.changeStep(step)
+  player.changePlayer(step)
+})
+
+
 const btn = createBtn({
   text: '下一步',
   callback() {
@@ -47,7 +66,7 @@ const btn = createBtn({
 })
 game.scene.addChild(btn)
 
-
-setTimeout(()=>{
-  begin('newer')
+setTimeout(() => {
+  begin('child')
 }, 3000)
+

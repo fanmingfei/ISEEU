@@ -56,6 +56,7 @@ export interface Step {
   type: ConfigType;
   id: string;
   background: string;
+  player: string;
   next: Array<Next>;
 }
 export interface Empty {
@@ -164,8 +165,9 @@ export const question: Question[] = [{
 export const step: Step[] = [
   {
     type: ConfigType.step,
-    id: 'newer',
-    background: 'xxx',
+    id: 'child',
+    background: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
+    player: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
     next: [{
       type: ConfigType.dialogue,
       id: 'START'
@@ -173,8 +175,9 @@ export const step: Step[] = [
   },
   {
     type: ConfigType.step,
-    id: 'adult',
-    background: 'xxx',
+    id: 'youth',
+    background: 'https://gw.alicdn.com/tfs/TB1DNzoOvb2gK0jSZK9XXaEgFXa-658-1152.webp',
+    player: 'https://gw.alicdn.com/tfs/TB1DNzoOvb2gK0jSZK9XXaEgFXa-658-1152.webp',
     next: [{
       type: ConfigType.dialogue,
       id: '123'
@@ -182,8 +185,9 @@ export const step: Step[] = [
   },
   {
     type: ConfigType.step,
-    id: 'xxx',
-    background: 'xxx',
+    id: 'adult',
+    background: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
+    player: './statics/TB15Upxqk9l0K4jSZFKXXXFjpXa-750-1624.jpg',
     next: [{
       type: ConfigType.empty,
       id: ''

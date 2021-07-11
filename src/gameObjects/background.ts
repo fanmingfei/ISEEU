@@ -1,23 +1,14 @@
 import { GameObject } from '@eva/eva.js';
-import { Img } from '@eva/plugin-renderer-img'
+import Background from '../components/background';
+import { SCENE_HEIGHT, SCENE_WIDTH } from '../const';
 export default function createBackground() {
-  const bg = new GameObject('bg', {
-    size: { width: 750, height: 1624 },
-    origin: { x: 0.5, y: 1 },
-    position: {
-      x: 0,
-      y: 120,
-    },
-    anchor: {
-      x: 0.5,
-      y: 1,
-    },
-  });
 
-  bg.addComponent(
-    new Img({
-      resource: 'bg',
-    })
-  );
-  return bg;
+  const backContainer = new GameObject('backContainer', {
+    size: {
+      width: SCENE_WIDTH,
+      height: SCENE_HEIGHT
+    }
+  })
+  const component = backContainer.addComponent(new Background())
+  return {backContainer, background: component}
 }

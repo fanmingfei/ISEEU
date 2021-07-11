@@ -1,4 +1,5 @@
 import config, { AllType, ConfigType, dialogue, Dialogue, Next, Question, Step, step } from './config';
+import event from './event';
 import { findById } from './utils';
 
 interface AnswerCache {
@@ -26,6 +27,7 @@ const loadQuestion = () => {
 }
 const loadStep = () => {
   console.log('加载场景', current.id)
+  event.emit('changeStep', current.id)
 }
 const loadNull = () => { }
 
@@ -60,11 +62,11 @@ export function next(nexts?: Next[]) {
 
 
 /** 当选项被选择时 */
-export function AnswerSelected(id: string) {
+export function answerSelected(id: string) {
   if (current.type !== ConfigType.question) return
   const answer = findById(current.answers, id)
   if (answer) {
     next(answer.next)
   }
 }
-window.AnswerSelected = AnswerSelected
+window.answerSelected = answerSelected
