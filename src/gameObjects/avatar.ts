@@ -14,7 +14,8 @@ interface nextParams {
 }
 const w = 150;
 const h = 100;
-const y = 900;
+const x = -300;
+const y = -520;
 
 class Avatar {
   box: any;
@@ -28,10 +29,17 @@ class Avatar {
         height: h,
       },
       position: {
-        x: 0 + w / 2,
-        y: y + h / 2,
+        x: x,
+        y: y,
       },
-      origin: { x: 0.5, y: 0.5 },
+      anchor: {
+        y: 1,
+        x: 0.5
+      },
+      origin: {
+        y: 1,
+        x: 0.5
+      }
     });
 
     this.renderComponent = box.addComponent(
@@ -61,12 +69,22 @@ class Avatar {
             values: [
               {
                 time: 0,
-                value: 0 + w / 2,
+                value: x,
                 tween: 'ease-out',
               },
               {
                 time: 1500,
-                value: 375,
+                value: 0,
+                tween: 'ease-out',
+              },
+              {
+                time: 2000,
+                value: 0,
+                tween: 'ease-in',
+              },
+              {
+                time: 3000,
+                value: 175,
               },
             ],
           },
@@ -76,12 +94,22 @@ class Avatar {
             values: [
               {
                 time: 0,
-                value: y + h / 2,
+                value: y,
                 tween: 'ease-out',
               },
               {
                 time: 1500,
-                value: 400,
+                value: y - 400,
+                tween: 'ease-out',
+              },
+              {
+                time: 2000,
+                value: y - 400,
+                tween: 'ease-in',
+              },
+              {
+                time: 3000,
+                value: - 130,
               },
             ],
           },
@@ -96,7 +124,17 @@ class Avatar {
               },
               {
                 time: 1500,
-                value: 2,
+                value: 2.5,
+                tween: 'ease-out',
+              },
+              {
+                time: 2000,
+                value: 2.5,
+                tween: 'ease-in',
+              },
+              {
+                time: 3000,
+                value: 0,
               },
             ],
           },
@@ -111,7 +149,17 @@ class Avatar {
               },
               {
                 time: 1500,
-                value: 2,
+                value: 2.5,
+                tween: 'ease-out',
+              },
+              {
+                time: 2000,
+                value: 2.5,
+                tween: 'ease-in',
+              },
+              {
+                time: 3000,
+                value: 0,
               },
             ],
           },
@@ -125,12 +173,12 @@ class Avatar {
                 tween: 'ease-out',
               },
               {
-                time: 1000,
+                time: 2000,
                 value: 1,
-                tween: 'ease-out',
+                tween: 'ease-in',
               },
               {
-                time: 2000,
+                time: 3000,
                 value: 0,
               },
             ],

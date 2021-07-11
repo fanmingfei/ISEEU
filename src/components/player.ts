@@ -38,18 +38,18 @@ export default class Player extends Component {
     const go = new GameObject('go', {
       position: {
         x: 0,
-        y: 300
+        y: 0
       },
       size: {
         width: 750,
         height: 750,
       },
       anchor: {
-        y: 0.5,
+        y: 1,
         x: 0.5
       },
       origin: {
-        y: 0.5,
+        y: 1,
         x: 0.5
       }
     })
