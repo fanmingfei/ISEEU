@@ -75,5 +75,3 @@ export function answerSelected(id: string) {
     next(answer.next)
   }
 }
-
-window.answerSelected = answerSelected

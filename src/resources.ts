@@ -8,7 +8,8 @@ const resources = [
       image: {
         type: 'png',
         url:
-          './statics/dialogue.png',
+        'https://img.alicdn.com/imgextra/i2/O1CN014Meb4o26GQG2evk6C_!!6000000007634-2-tps-668-577.png',
+          // './statics/dialogue.png',
       },
     },
     preload: true,
@@ -20,7 +21,7 @@ const resources = [
       image: {
         type: 'png',
         url:
-          'https://img.alicdn.com/imgextra/i4/O1CN01RXdhwX1JJFWubbUfd_!!6000000001007-2-tps-237-195.png',
+          './statics/a.png',
       },
     },
     preload: true,
@@ -32,7 +33,7 @@ const resources = [
       image: {
         type: 'png',
         url:
-          'https://img.alicdn.com/imgextra/i2/O1CN01aTDBya1FroxmOavK3_!!6000000000541-2-tps-212-173.png',
+          './statics/b.png',
       },
     },
     preload: true,

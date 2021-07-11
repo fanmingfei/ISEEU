@@ -17,7 +17,7 @@ export default function createBubbles(textArr: Array<any>) {
     size: { width: 250, height: 250 },
     position: {
       x: -230,
-      y: 0
+      y: -100
     },
     origin: {
       x: 0.5,
@@ -53,12 +53,12 @@ export default function createBubbles(textArr: Array<any>) {
     new Text({
       text: textArr[0].value,
       style: {
-        fontFamily: 'Arial',
-        fontSize: 26,
+        fontFamily: 'SentyTang',
+        fontSize: 40,
         fontWeight: 'bold',
-        fill: 'white',
-        wordWrap: true,
-        wordWrapWidth: 200,
+        fill: 0x333333,
+        // wordWrap: true,
+        // wordWrapWidth: 200,
         breakWords: true
       }
     })
@@ -70,7 +70,7 @@ export default function createBubbles(textArr: Array<any>) {
     size: { width: 286, height: 286 },
     position: {
       x: 230,
-      y: 0
+      y: -100
     },
     origin: {
       x: 0.5,
@@ -107,13 +107,13 @@ export default function createBubbles(textArr: Array<any>) {
     new Text({
       text: textArr[1].value,
       style: {
-        fontFamily: 'Arial',
-        fontSize: 26,
+        fontFamily: 'SentyTang',
+        fontSize: 40,
         fontWeight: 'bold',
-        fill: 'white',
+        fill: 0x333333,
         wordWrap: true,
         wordWrapWidth: 200,
-        breakWords: true
+        breakWords: true,
       }
     })
   )

@@ -30,7 +30,7 @@ class Dialogue {
         y: 900,
       },
     });
-  
+
     box.addComponent(
       new Img({
         resource: 'dialogue',
@@ -42,13 +42,13 @@ class Dialogue {
         alpha: 1,
       }),
     );
-  
+
     const evt = box.addComponent(new Event)
     evt.on('tap', () => {
       onTap();
     })
-  
-  
+
+
     const textEl = this.textEl = new GameObject('text', {
       position: {
         x: 120,
@@ -59,8 +59,9 @@ class Dialogue {
       new Text({
         text: text,
         style: {
+          fontFamily: 'SentyTang',
           fontSize: 32,
-          fill: 0xffffff,
+          fill: 0x333333,
           wordWrap: true,
           wordWrapWidth: 580,
           breakWords: true
@@ -68,10 +69,10 @@ class Dialogue {
       })
     );
     box.addChild(textEl);
-    
+
     return box;
   }
-  next({ text } : nextParams ) {
+  next({ text }: nextParams) {
     this.textComponent.text = text;
   }
   async destroy() {
@@ -97,11 +98,11 @@ class Dialogue {
     //   }
     // })
     // const animation = this.box.addComponent(transition)
-  
+
     // animation.play('idle', 1)
     // animation.on('finish', () => {
     //   this.box.removeComponent(transition);
-      this.box.destroy();
+    this.box.destroy();
     // })
   }
 }

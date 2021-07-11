@@ -4,7 +4,7 @@ import { Text } from '@eva/plugin-renderer-text'
 
 export default function createRactangle(txt: string) {
   const ractangle = new GameObject('ractangle', {
-    size: { width: 470, height: 390 },
+    size: { width: 750, height: 390 },
     origin: { x: 0.5, y: 1 },
     position: {
       x: 0,
@@ -21,8 +21,8 @@ export default function createRactangle(txt: string) {
       resource: 'rectangle',
     })
   );
-	const text = new GameObject('text', {
-    size: { width: 470, height: 390 },
+  const text = new GameObject('text', {
+    // size: { width: 520, height: 390 },
     position: {
       x: 0,
       y: 0
@@ -36,21 +36,21 @@ export default function createRactangle(txt: string) {
       y: 0.5
     }
   })
-  
+
   text.addComponent(
     new Text({
       text: txt,
       style: {
-        fontFamily: 'Arial',
-        fontSize: 32,
+        fontFamily: 'SentyTang',
+        fontSize: 44,
         fontWeight: 'bold',
-				fill:'black',
+        fill: 0x333333,
         wordWrap: true,
-        wordWrapWidth: 357,
+        wordWrapWidth: 550,
         breakWords: true
       }
     })
   )
-	ractangle.addChild(text)
+  ractangle.addChild(text)
   return ractangle;
 }
