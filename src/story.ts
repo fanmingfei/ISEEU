@@ -9,7 +9,7 @@ export default function createStory(dialogue: Dialogue) {
   /** 对话框初始信息 */
   function initDialogue() {
     const currentInfo = list?.[currentDialogueIndex];
-console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
+    console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
     return {
       text: currentInfo?.value,
       avatar: `dialogue_${dialogue?.id}_${currentDialogueIndex}`
@@ -24,7 +24,7 @@ console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
       dialogueGO.next({
         text: currentInfo?.value
       })
-console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
+      console.log(`dialogue_${dialogue?.id}_${currentDialogueIndex}`)
       avatarGO.next({
         avatar: `dialogue_${dialogue?.id}_${currentDialogueIndex}`
       })
