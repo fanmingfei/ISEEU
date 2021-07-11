@@ -69,4 +69,29 @@ export function answerSelected(id: string) {
     next(answer.next)
   }
 }
+
 window.answerSelected = answerSelected
+
+/** 当前对话框次序 */
+let currentDialogueIndex = 0;
+/** 对话框初始信息 */
+export function initDialogue() {
+  const currentText = dialogue?.[0]?.list?.[currentDialogueIndex]?.value;
+  return currentText;
+}
+/** 点击对话框 */
+export function clickDialogue(dialogueGO: any, avatarGO: any) {
+  const length = dialogue?.[0]?.list?.length;
+  currentDialogueIndex++;
+  if (currentDialogueIndex !== length) {
+    const currentText = dialogue?.[0]?.list?.[currentDialogueIndex]?.value;
+    dialogueGO.next({
+      text: currentText
+    })
+  } else {
+    // 结束
+    avatarGO.playMoveAnimate();
+    dialogueGO.destroy();
+  }
+  return;
+}

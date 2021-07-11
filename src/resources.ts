@@ -1,7 +1,32 @@
 import { RESOURCE_TYPE } from '@eva/eva.js';
 import { step } from './config';
-const resources = [] as any;
-step.forEach((item)=>{
+const resources = [
+  {
+    name: 'dialogue',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/dialogue.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'avatar',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url:
+          './statics/avatar.png',
+      },
+    },
+    preload: true,
+  }
+] as any;
+step.forEach((item) => {
   resources.push({
     name: `player_${item.id}`,
     type: RESOURCE_TYPE.IMAGE,
@@ -24,7 +49,7 @@ step.forEach((item)=>{
     },
     preload: true,
   })
-  
+
 })
 
 export default resources

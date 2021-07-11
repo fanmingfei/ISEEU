@@ -1,4 +1,5 @@
-
+import { Avatar } from './gameObjects/avatar';
+import { Dialogue } from './gameObjects/dialogue';
 import createBtn from './gameObjects/btn';
 import resources from './resources';
 
@@ -11,7 +12,7 @@ import { RenderSystem } from '@eva/plugin-renderer-render';
 import { TransitionSystem } from '@eva/plugin-transition';
 import { GraphicsSystem } from '@eva/plugin-renderer-graphics';
 import { TextSystem } from '@eva/plugin-renderer-text';
-import { begin, next } from './manager';
+import { begin, next, initDialogue, clickDialogue } from './manager';
 import { SCENE_HEIGHT, SCENE_WIDTH } from './const';
 import createBackground from './gameObjects/background';
 import createPlayer from './gameObjects/player';
@@ -69,4 +70,18 @@ game.scene.addChild(btn)
 setTimeout(() => {
   begin('child')
 }, 3000)
+// Avatar
+const avatarGO = new Avatar();
+const avatarEl = avatarGO.init({})
+game.scene.addChild(avatarEl);
+
+// Dialogue
+const dialogueGO = new Dialogue();
+const dialogueEl = dialogueGO.init({
+  text: initDialogue(),
+  onTap: () => {
+    clickDialogue(dialogueGO, avatarGO);
+  }
+})
+game.scene.addChild(dialogueEl);
 
