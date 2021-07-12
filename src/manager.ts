@@ -34,7 +34,9 @@ const loadStep = () => {
   console.log('加载场景', current.id)
   event.emit('changeStep', current.id)
 }
-const loadNull = () => { }
+const loadNull = () => { 
+  event.emit('end')
+}
 
 const loadTable = {
   [ConfigType.dialogue]: loadDialogue,

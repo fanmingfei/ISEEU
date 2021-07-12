@@ -5,14 +5,14 @@ import { Text } from '@eva/plugin-renderer-text'
 export default function createRactangle(txt: string) {
   const ractangle = new GameObject('ractangle', {
     size: { width: 750, height: 390 },
-    origin: { x: 0.5, y: 1 },
+    origin: { x: 0.5, y: 0 },
     position: {
       x: 0,
-      y: -1000,
+      y: 50,
     },
     anchor: {
       x: 0.5,
-      y: 1,
+      y: 0,
     },
   });
 

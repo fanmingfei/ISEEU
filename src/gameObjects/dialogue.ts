@@ -23,11 +23,11 @@ class Dialogue {
     const box = this.box = new GameObject('box', {
       size: {
         width: 750,
-        height: 300,
+        height: 500,
       },
       position: {
         x: 0,
-        y: -320,
+        y: -100,
       },
       anchor: {
         y: 1,
@@ -68,7 +68,7 @@ class Dialogue {
         text: text,
         style: {
           fontFamily: 'SentyTang',
-          fontSize: 32,
+          fontSize: 58,
           fill: 0x333333,
           wordWrap: true,
           wordWrapWidth: 510,

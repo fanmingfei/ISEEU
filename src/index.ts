@@ -3,7 +3,7 @@ import { Dialogue } from './gameObjects/dialogue';
 import createBtn from './gameObjects/btn';
 import resources from './resources';
 
-import { Game, GameObject, resource, } from '@eva/eva.js';
+import { Game, GameObject, resource, LOAD_EVENT } from '@eva/eva.js';
 import { RendererSystem } from '@eva/plugin-renderer';
 import { ImgSystem } from '@eva/plugin-renderer-img';
 import { EventSystem } from '@eva/plugin-renderer-event';
@@ -23,6 +23,7 @@ import createPerson from './gameObjects/person';
 import createRactangle from './gameObjects/ractangle';
 import createBubbles from './gameObjects/bubbles';
 import { Question } from './config';
+import createEnd from './gameObjects/end';
 window.event = event
 
 resource.addResource(resources);
@@ -51,13 +52,24 @@ const game = new Game({
 game.scene.transform.size.width = SCENE_WIDTH;
 game.scene.transform.size.height = SCENE_HEIGHT;
 
-const sound = game.scene.addComponent(new Sound({
-  resource: 'bgSound'
+const bgm = game.scene.addComponent(new Sound({
+  resource: 'bgm',
+  volume: 0.3,
+  loop: true
 }))
-// document.body.addEventListener('touchstart', () => {
-//   sound.play()
-// })
 
+
+let a = false
+document.body.addEventListener('touchstart', () => {
+  if (a) return
+  a = true
+  bgm.play()
+})
+
+const s = new GameObject('')
+const sound = s.addComponent(new Sound({
+  resource: 'vo'
+}))
 
 const { backContainer, background } = createBackground()
 game.scene.addChild(backContainer)
@@ -114,7 +126,9 @@ event.on('answer', (id) => {
   select.remove()
 })
 
-
+event.on('end', () => {
+  game.scene.addChild(createEnd())
+})
 
 
 // setTimeout(() => {
@@ -124,3 +138,13 @@ event.on('answer', (id) => {
 // }, 5000)
 
 
+const dom = document.querySelector('#loading')
+console.log(dom)
+resource.preload()
+resource.on(LOAD_EVENT.PROGRESS, (e) => {
+  console.log(e)
+  dom && (dom.innerHTML = `加载音效中：${e.progress * 100}%`)
+})
+resource.on(LOAD_EVENT.COMPLETE, () => {
+  document.body.removeChild(dom)
+})

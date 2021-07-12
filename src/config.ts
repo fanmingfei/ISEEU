@@ -81,26 +81,28 @@ export const dialogue: Dialogue[] = [{
       name: '',
       value: '你背着书包冲进家门，高喊一声“我回来啦”，爸爸妈妈正在厨房做饭',
       seek: 0.1,
-      duration: 3,
+      duration: 9,
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
       value: '你将书包甩到书桌上，打开电视准备看海绵宝宝',
-      seek: 3,
-      duration: 3
+      seek: 11,
+      duration: 6
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
       value: '还没看一会儿，妈妈就开吼：作业写完了么？就看电视！',
-      seek: 4,
-      duration: 3
+      seek: 18,
+      duration: 6 // 24
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '你悻悻地关上电视，回房写作业去了，但还是有些委屈。'
+      value: '你悻悻地关上电视，回房写作业去了，但还是有些委屈。',
+      seek: 25,
+      duration: 8 // 33
     },
   ],
   next: [{
@@ -115,17 +117,23 @@ export const dialogue: Dialogue[] = [{
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '店里新上海绵宝宝的玩具，让你很是眼馋，就是价格让你望而却步'
+      value: '店里新上海绵宝宝的玩具，让你很是眼馋，就是价格让你望而却步',
+      seek: 35,
+      duration: 10 // 45
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '看着口袋里只有攒下的4块钱，叹了口气'
+      value: '看着口袋里只有攒下的4块钱，叹了口气',
+      seek: 45,
+      duration: 7 // 52
     },
     {
       avatar: './statics/haimianbaobao.png',
       name: '',
-      value: '你有些不舍的离开了小店，临走前还看了一眼海绵宝宝'
+      value: '你有些不舍的离开了小店，临走前还看了一眼海绵宝宝',
+      seek: 53.5,
+      duration: 7 // 59.5
     },
   ],
   next: [{
@@ -140,17 +148,23 @@ export const dialogue: Dialogue[] = [{
     {
       avatar: './statics/rongyao.png',
       name: '',
-      value: '队友坑到不行，你觉得有点带不动'
+      value: '队友坑到不行，你觉得有点带不动',
+      seek: 61,
+      duration: 4 // 65
     },
     {
       avatar: './statics/rongyao.png',
       name: '',
-      value: '我方水晶被打爆的瞬间，有点不爽，对着死党说：再来'
+      value: '我方水晶被打爆的瞬间，有点不爽，对着死党说：再来',
+      seek: 66,
+      duration: 8 // 72
     },
     {
       avatar: './statics/rongyao.png',
       name: '',
-      value: '不知不觉已经凌晨1点了，自己晚上什么书都没有看，暗暗发誓明天一定要认真复习'
+      value: '不知不觉已经凌晨1点了，自己晚上什么书都没有看，暗暗发誓明天一定要认真复习',
+      seek: 74,
+      duration: 8 // 82
     },
   ],
   next: [{
@@ -165,17 +179,23 @@ export const dialogue: Dialogue[] = [{
     {
       avatar: './statics/sannian.png',
       name: '',
-      value: '你翻开了五年高考三年模拟，准备开始做题'
+      value: '你翻开了五年高考三年模拟，准备开始做题',
+      seek: 83,
+      duration: 5 // 87
     },
     {
       avatar: './statics/sannian.png',
       name: '',
-      value: '然而，10分钟后，却开始打哈欠犯困了'
+      value: '然而，10分钟后，却开始打哈欠犯困了',
+      seek: 90,
+      duration: 5 // 94
     },
     {
       avatar: './statics/sannian.png',
       name: '',
-      value: '上下眼皮打架，最终还是趴在桌上睡着了'
+      value: '上下眼皮打架，最终还是趴在桌上睡着了',
+      seek: 96,
+      duration: 6 // 101
     },
   ],
   next: [{
@@ -190,7 +210,9 @@ export const dialogue: Dialogue[] = [{
     {
       avatar: './statics/huatong.png',
       name: '',
-      value: '你充分发挥出中华小曲库的能力，成为了场上的焦点，不知不觉很晚了，明天还要上班，大家各自回家了。'
+      value: '你充分发挥出中华小曲库的能力，成为了场上的焦点，不知不觉很晚了，明天还要上班，大家各自回家了。',
+      seek: 102,
+      duration: 11 // 113
     }
   ],
   next: [{
@@ -205,17 +227,23 @@ export const dialogue: Dialogue[] = [{
     {
       avatar: './statics/pijiu.png',
       name: '',
-      value: '跟同事比摇骰子，也不知道今天怎么了，一次也没赢过'
+      value: '跟同事比摇骰子，也不知道今天怎么了，一次也没赢过',
+      seek: 114,
+      duration: 7 // 121
     },
     {
       avatar: './statics/pijiu.png',
       name: '',
-      value: '输的酒到是喝了不少，有点发晕，你靠在了沙发上睡了起来'
+      value: '输的酒到是喝了不少，有点发晕，你靠在了沙发上睡了起来',
+      seek: 121,
+      duration: 6 // 127
     },
     {
       avatar: './statics/pijiu.png',
       name: '',
-      value: '醒来的时候已经是早上了，头发晕，却还要去上班。'
+      value: '醒来的时候已经是早上了，头发晕，却还要去上班。',
+      seek: 127,
+      duration: 7 // 143
     },
   ],
   next: [{
@@ -232,7 +260,7 @@ export const question: Question[] = [{
   answers: [
     {
       id: 'confirm_school_choice_a',
-      value: '回家看铠甲勇士',
+      value: '回家看海绵宝宝',
       next: [{
         type: ConfigType.dialogue,
         id: 'school_choice_a'
@@ -251,7 +279,7 @@ export const question: Question[] = [{
 }, {
   type: ConfigType.question,
   id: 'confirm_youth_choice',
-  value: '放学后校门口特别热闹，门口小商贩的周围，总是会聚集很多学生，你决定：',
+  value: '不知不觉已经高三了，越来越临近高考了，父母的期望像座大山有点压着你喘不过气，死党约你上荣耀开黑，放松一下，你决定',
   answers: [
     {
       id: 'confirm_youth_choice_a',
@@ -325,7 +353,7 @@ export const step: Step[] = [
       type: ConfigType.question,
       id: 'confirm_adult_choice'
     }]
-  }
+  },
 ]
 const empty: Empty[] = [{ type: ConfigType.empty, id: '' }]
 const config: { [propName: string]: AllType[] } = {

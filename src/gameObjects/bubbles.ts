@@ -59,7 +59,7 @@ export default function createBubbles(textArr: Array<any>) {
         fill: 0x333333,
         // wordWrap: true,
         // wordWrapWidth: 200,
-        breakWords: true
+        // breakWords: true
       }
     })
   )
